@@ -5,12 +5,16 @@ from .models import *
 
 def index(request):
     context = {
+        'categories':Category.objects.all(),
         'books':Book.objects.all(),
         }
     return render(request,'lms/index.html',context)
 
 def books(request):
-    context = {}
+    context = {
+        'categories':Category.objects.all(),
+        'books':Book.objects.all(),
+        }
     return render(request,'lms/books.html',context)
 
 def delete(request):

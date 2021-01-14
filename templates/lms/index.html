@@ -61,7 +61,7 @@
     
                     <div class="d-flex flex-row justify-content-end">
                         <span class="mr-2">
-                        <i class="fas fa-square text-primary"></i> الاربح من بيع الكتب
+                        <i class="fas fa-square text-primary"></i> الارباح من بيع الكتب
                         <p id="soldtotals"></p>     
                         </span>
                         <span>
@@ -114,19 +114,11 @@
             <div class="row justify-content-center mb-3">
                 <div class="col-4 ">
                 <ul class="nav">
-                
-                    <li class="nav-item ">
-                    <a id="" class="nav-link bg-primary" href="#">تاريخ</a>
-                    </li>
-                    <li class="nav-item ">
-                    <a id="" class="nav-link bg-primary" href="#">فن</a>
-                    </li>
-                    <li class="nav-item ">
-                    <a id="" class="nav-link bg-primary" href="#">ثقافة</a>
-                    </li>
-                    <li class="nav-item ">
-                    <a id="" class="nav-link bg-primary" href="#">رومانسية</a>
-                    </li>
+                    {% for category in categories|slice:'2' %}
+                        <li class="nav-item ">
+                        <a id="" class="nav-link bg-primary" href="#">{{category.name}}</a>
+                        </li>
+                    {% endfor %}
                 </ul>
                 </div>
             </div>
@@ -180,8 +172,19 @@
                                     <!-- /.col -->
                                 <div class="col-sm-4 border-right">
                                 <div class="description-block">
-                                    <h5 class="description-header">${{book.price}}</h5>
-                                    <span class="description-text">السعر</span>
+                                    
+                                    {% if book.price  %}
+                                        <h5 class="description-header">${{book.price}}</h5>
+                                        <span class="description-text">السعر</span>
+                                    {% elif book.rental_price_day %}
+                                        <h5 class="description-header">${{book.rental_price_day}}</h5>
+                                        <span class="description-text">الاستعاره/اليوم</span>
+                                    {% else %}
+                                        <h5 class="description-header">لم يحدد</h5>
+                                        <span class="description-text">لم يحدد</span>
+                                    {% endif %}
+                                        
+                                    
                                 </div>
                                 <!-- /.description-block -->
                                 </div>
