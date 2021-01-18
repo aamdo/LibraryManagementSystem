@@ -90,12 +90,8 @@
                 <!-- form start -->
                 <form method="POST" enctype="multipart/form-data"  > 
                 <div class="card-body"> 
-                    <input type="text" class="form-control">
-                    <input type="text" class="form-control">
-                    <input type="text" class="form-control">
-                    <input type="text" class="form-control">
-                    <input type="text" class="form-control">
-                    <small id='totalrente' class="form-text text-muted"></small>
+                    {{form}}
+
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
@@ -117,7 +113,7 @@
                     {% for category in categories|slice:'2' %}
                         <li class="nav-item ">
                         <a id="" class="nav-link bg-primary" href="#">{{category.name}}</a>
-                        </li>
+                        </li>   
                     {% endfor %}
                 </ul>
                 </div>
