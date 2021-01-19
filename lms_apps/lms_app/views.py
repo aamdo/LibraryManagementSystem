@@ -5,6 +5,14 @@ from.forms import BookForm
 # Create your views here.
 
 def index(request):
+    if request.method == 'POST':
+        add_book = BookForm(request.POST,request.FILES)
+        if add_book.is_valid():
+            add_book.save()
+
+
+
+
     context = {
         'categories':Category.objects.all(),
         'books':Book.objects.all(),
