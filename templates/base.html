@@ -50,6 +50,15 @@
 <!--<script src="dist/js/pages/dashboard3.js'"></script>
 -->
 <script>
+  $("#catadd_form").hide()
+  $("#addcat").click(function(){
+    $("#catadd_form").show()
+  });
+  $("#backcat").click(function(){
+    $("#catadd_form").hide()
+  });
+</script>
+<script>
   $(document).ready(function(){
     $('#myModal').on('shown.bs.modal', function () {
       $('#myInput').trigger('focus')
@@ -57,6 +66,7 @@
 /*here i will make loop for get id category and status for contact with books */
 /*حساب اجمالي الارباح و هي عبارة عن حاصل جمع سعر الكتب عند البيع بالاضافة الى سعر استعارة الكتاب*/
   });
+
 </script>
 <script>
  

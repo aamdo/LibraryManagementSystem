@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import *
-from.forms import BookForm
+from.forms import BookForm,CategoryForm
 
 # Create your views here.
 
@@ -10,13 +10,18 @@ def index(request):
         if add_book.is_valid():
             add_book.save()
 
+        add_cat = CategoryForm(request.POST)
+        if add_cat.is_valid():
+            add_cat.save()
+
 
 
 
     context = {
         'categories':Category.objects.all(),
         'books':Book.objects.all(),
-        'form': BookForm(),
+        'Bform': BookForm(),
+        'Cform': CategoryForm(),
         }
     return render(request,'lms/index.html',context)
 
