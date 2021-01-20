@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import *
 from.forms import BookForm,CategoryForm
 
@@ -36,7 +36,19 @@ def delete(request):
     context = {}
     return render(request,'lms/delete.html',context)
 
-def update(request):
-    context = {}
+def update(request,id):
+    book = Book.objects.get(id=id)
+    if request.method == 'POST':
+        book_new = BookForm(request.POST,request.FILES,instance=book)
+        if book_new.is_valid():
+            book_new.save()
+            return redirect('/')
+    else:
+        book_info = BookForm(instance=book)
+                
+        
+    context = {
+        'book':book_info,
+    }
     return render(request,'lms/update.html',context)
 
