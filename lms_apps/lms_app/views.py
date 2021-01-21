@@ -14,9 +14,6 @@ def index(request):
         if add_cat.is_valid():
             add_cat.save()
 
-
-
-
     context = {
         'categories':Category.objects.all(),
         'books':Book.objects.all(),
@@ -32,11 +29,7 @@ def books(request):
         }
     return render(request,'lms/books.html',context)
 
-def delete(request):
-    context = {}
-    return render(request,'lms/delete.html',context)
-
-def update(request,id):
+def update_book(request,id):
     book = Book.objects.get(id=id)
     if request.method == 'POST':
         book_new = BookForm(request.POST,request.FILES,instance=book)
@@ -45,10 +38,18 @@ def update(request,id):
             return redirect('/')
     else:
         book_info = BookForm(instance=book)
-                
-        
+                 
     context = {
         'book':book_info,
-    }
+        }
     return render(request,'lms/update.html',context)
 
+
+def delete_book(request,id):
+    book = Book.objects.get(id=id)
+    if request.method == 'POST':
+        book.delete()
+        return redirect('/')
+
+    
+    return render(request,'lms/delete.html')

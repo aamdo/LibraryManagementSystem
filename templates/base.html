@@ -59,6 +59,17 @@
   });
 </script>
 <script>
+
+   {% for book in books %}
+    $(".cat{{book.category.id}}").click(function(){
+      $(".bookhide").hide()
+      $(".book{{book.category.id}}").show()
+    });
+  {% endfor %}
+    
+  
+</script>
+<script>
   $(document).ready(function(){
     $('#myModal').on('shown.bs.modal', function () {
       $('#myInput').trigger('focus')

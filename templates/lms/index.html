@@ -41,7 +41,7 @@
                 </div>
                 <!-- /.col-md-6 -->
                 
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                 <div class="card">
                     <div class="card-header border-0">
                     <div class="d-flex justify-content-between">
@@ -111,8 +111,8 @@
             <div class="row justify-content-center mb-3">
                 <div class="col-4 ">
                 <ul class="nav">
-                    {% for category in categories|slice:'2' %}
-                        <li class="nav-item ">
+                    {% for category in categories|slice:'3' %}
+                        <li class="nav-item cat{{category.id}}">
                         <a id="" class="nav-link bg-primary" href="#">{{category.name}}</a>
                         </li>   
                     {% endfor %}
@@ -127,7 +127,7 @@
                 {% for book in books %}
         
                     <!-- الكتب -->
-                        <div id="" class="col-md-4">
+                        <div id="" class="col-md-2 bookhide book{{book.category.id}} " >
                             <!-- Widget: user widget style 1 -->
                             <div id="" class="card card-widget widget-user ">
                             <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -137,8 +137,8 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{% url 'update' book.id %}">تعديل</a>
-                                <a class="dropdown-item" href="#">حذف</a>
+                                <a class="dropdown-item" href="{% url 'update_book' book.id %}">تعديل</a>
+                                <a class="dropdown-item" href="{% url 'delete_book' book.id %}">حذف</a>
                             <!-- Button trigger modal -->
                             </div>
                             </div>
