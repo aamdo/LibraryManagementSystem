@@ -19,6 +19,10 @@ def index(request):
         'books':Book.objects.all(),
         'Bform': BookForm(),
         'Cform': CategoryForm(),
+        'allbooks':Book.objects.filter(active=True).count(),
+        'booksold':Book.objects.filter(status='sold').count(),
+        'bookrented':Book.objects.filter(status='rented').count(),
+        'bookavailble':Book.objects.filter(status='availble').count(),
         }
     return render(request,'lms/index.html',context)
 

@@ -57,6 +57,10 @@
   $("#backcat").click(function(){
     $("#catadd_form").hide()
   });
+
+  $('#rp').keyup(function(){
+    $('#tr').val($('#rp').val() * $('#rpd').val() )
+  });
 </script>
 <script>
 
@@ -190,7 +194,7 @@ $(function () {
     type: 'pie',
     data: {
       datasets: [{
-        data: ['35','25','40'],
+        data: ['{{bookavailble}}','{{booksold}}','{{bookrented}}'],
         backgroundColor :["#27c100","#f3545d","#fdaf4b"],
         borderWidth: 10,
         
