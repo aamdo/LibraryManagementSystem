@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% block content %}
 <div style="direction: rtl" class="wrapper">
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -17,8 +18,10 @@
               <div class="card-body">
                 <div class="d-flex">
                   <p class="d-flex flex-column">
-                    <span class="text-bold text-lg">(  {{ allbooks }}  )   كتب/كتاب </span>
-                    <span>  </span>
+                    <span class="text-bold text-lg"
+                      >( {{ allbooks }} ) كتب/كتاب
+                    </span>
+                    <span> </span>
                   </p>
                 </div>
                 <!-- /.d-flex -->
@@ -29,12 +32,31 @@
             </div>
             <!-- /.card -->
           </div>
-          <!-- /.col-md-6 -->
+            <!-- /.col-md-6 -->
+            <div>
+              {% for book in books %}
+                 {% if book.price != None %}
+                    {% if book.status == 'sold' %}
+                    <p class="bookprice">{{book.price}}</p>
+                  {% endif %}
+                {% endif %}
+  
+                
+                {% if book.total_rental != None %}
+                  {% if book.status == 'rented' %}
+                    <p class="bookprice" >{{book.total_rental}}</p>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+           </div>
+            
+
           <div class="col-lg-4">
+            
             <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">الارباح</h3>
+                     <h3 class="card-title">الارباح</h3>
                 </div>
               </div>
               <div class="card-body">
@@ -66,6 +88,8 @@
 
           <!-- /.col-md-6 -->
         </div>
+
+        
         <!-- /.row -->
         <!-- form add books -->
         <div class="row m-1 mb-3">
@@ -73,7 +97,7 @@
             >+ اضافة كتاب</a
           >
         </div>
-
+         
         <div id="bookform" class="card card-primary collapse">
           <div class="card-header">
             <h3 class="card-title">اضافة كتاب</h3>
