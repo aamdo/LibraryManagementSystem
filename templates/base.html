@@ -52,9 +52,14 @@
 
 <script>
   $(document).ready(function(){
-    var
-
-  })
+    var total = 0;
+    $('.bookprice').each(function(){
+      $(this).hide()
+      var salary = $(this).text()
+      total += parseInt(salary)
+    });
+    $('#totalsalarys').text(total)
+  });
 </script>
 <script>
   $("#catadd_form").hide()
