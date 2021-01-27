@@ -80,19 +80,24 @@
 
         <div>
           {% for book in books %}
-              {% if book.price != None %}
-                {% if book.status == 'sold' %}
-                <p class="bookprice">{{book.price}}</p>
-              {% endif %}
-            {% endif %}
 
-            
+            {% if book.price != None %}
+                {% if book.status == 'sold' %}
+                  <p class="bookprice_sold">{{book.price}}</p>
+                {% endif %}
+            {% endif %}
+           
+          
             {% if book.total_rental != None %}
               {% if book.status == 'rented' %}
-                <p class="bookprice" >{{book.total_rental}}</p>
+                <p class="bookprice_rental" >{{book.total_rental}}</p>
               {% endif %}
             {% endif %}
+            
           {% endfor %}
+          <p class='salary_sold' ></p>
+          <p class='salary_rental' ></p>
+
         </div>
         
         <!-- /.row -->

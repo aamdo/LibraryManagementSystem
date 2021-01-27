@@ -48,18 +48,39 @@
 
 <script src="{% static 'dist/js/demo.js' %}"></script>
 <!--<script src="dist/js/pages/dashboard3.js'"></script>
+
+   
 -->
 
 <script>
   $(document).ready(function(){
+    var totalsold = 0;
+    var totalrental = 0;
     var total = 0;
-    $('.bookprice').each(function(){
+    
+    $('.bookprice_sold').each(function(){
       $(this).hide()
       var salary = $(this).text()
-      total += parseInt(salary)
+      totalsold += parseInt(salary)
     });
-    $('#totalsalarys').text(total)
+
+    $('.bookprice_rental').each(function(){
+      $(this).hide()
+      var salary = $(this).text()
+      totalrental += parseInt(salary)
+    });
+
+
+    $('.salary_sold').text(totalsold);
+    $('.salary_rental').text(totalrental);
+    $('.salary_sold').hide()
+    $('.salary_rental').hide()
+    
+    total=totalsold+totalrental;
+    $('#totalsalarys').text( $('#totalsalarys').text() + total);
+
   });
+
 </script>
 <script>
   $("#catadd_form").hide()
@@ -138,14 +159,14 @@ $(function () {
           backgroundColor: '#007bff',
           borderColor    : '#007bff',
           data           : [ 
-               '50',
+               $('.salary_sold').text()
           ]
         },
         {
           backgroundColor: '#ced4da',
           borderColor    : '#ced4da',
           data           : [ 
-                '30',
+                $('.salary_rental').text()
           ]
         }
       ]
