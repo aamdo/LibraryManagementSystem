@@ -54,29 +54,27 @@
 
 <script>
   $(document).ready(function(){
-    var totalsold = 0;
-    var totalrental = 0;
-    var total = 0;
-    
+     var total = 0;
     $('.bookprice_sold').each(function(){
       $(this).hide()
       var salary = $(this).text()
-      totalsold += parseInt(salary)
+      total += parseInt(salary)
     });
-
+      $('.salary_sold').text(total);
+      
+      total = 0;
     $('.bookprice_rental').each(function(){
       $(this).hide()
       var salary = $(this).text()
-      totalrental += parseInt(salary)
+      total += parseInt(salary)
     });
-
-
-    $('.salary_sold').text(totalsold);
-    $('.salary_rental').text(totalrental);
+    $('.salary_rental').text(total);
+        
     $('.salary_sold').hide()
     $('.salary_rental').hide()
     
-    total=totalsold+totalrental;
+    total+= parseInt($('.salary_sold').text());
+
     $('#totalsalarys').text( $('#totalsalarys').text() + total);
 
   });
