@@ -27,11 +27,21 @@ def index(request):
     return render(request,'lms/index.html',context)
 
 def books(request):
-    context = {
+    search=Book.objects.all()
+    title = None
+    if 'search_name' in request.GET:
+        title = request.GET['search_name']
+        if title:
+            search = search.filter(title__icontains=title)
+
+
+    context = { 
         'categories':Category.objects.all(),
-        'books':Book.objects.all(),
+        'books':search,
+        'Cform': CategoryForm(),
         }
     return render(request,'lms/books.html',context)
+
 
 def update_book(request,id):
     book = Book.objects.get(id=id)
